@@ -7,15 +7,13 @@ const app = express();
 const PORT = process.env.PORT || 5000;
 app.use(
   cors({
-    origin: [
-      "http://localhost:3000",
-      "http://localhost:5173",
-    ],
+    origin: "*",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(express.json());
+
 
 mongoose
   .connect(process.env.MONGO_URI)
@@ -36,6 +34,12 @@ const Product = mongoose.model("Product", productSchema);
 
 app.get("/", (req, res) => {
   res.json({ success: true, message: "Express MongoDB CRUD API is running" });
+});
+
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: "ok"
+  });
 });
 
 // CREATE
