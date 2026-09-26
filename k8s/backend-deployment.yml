@@ -14,12 +14,12 @@ spec:
     spec:
       containers:
         - name: backend
-          image: parampatel123456/product-crud-backend:latest
-          imagePullPolicy: Always
+          image: product-backend:local
+          imagePullPolicy: Never
           ports:
             - containerPort: 5000
           env:
             - name: PORT
               value: "5000"
             - name: MONGO_URI
-              value: "mongodb://mongo-service:27017/productdb"
+              value: "mongodb://mongo-service.default.svc.cluster.local:27017/productdb"

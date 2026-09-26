@@ -14,7 +14,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: parampatel123456/product-crud-frontend:latest
-          imagePullPolicy: Always
+          image: product-frontend:local
+          imagePullPolicy: Never
           ports:
             - containerPort: 5173
